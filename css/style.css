@@ -3,7 +3,7 @@
 =========================== */
 :root {
   --gold:        #C9A84C;
-  --gold-light:  #E8C97A;
+  --gold-light:  #f5e6a8;
   --gold-dim:    #8a6f2e;
   --bg:          #080808;
   --bg-card:     rgba(255,255,255,0.04);
@@ -24,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  font-size: clamp(14px, 1.1vw + 8px, 17px);
 }
 
 body {
@@ -35,7 +37,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle noise grain overlay */
+/* Grain overlay */
 body::before {
   content: "";
   position: fixed;
@@ -57,8 +59,6 @@ body::before {
 /* ===========================
    HEADER
 =========================== */
-
-
 .header-color {
   background: var(--header-bg);
   position: sticky;
@@ -72,7 +72,7 @@ body::before {
   left: 0; right: 0; bottom: -60px;
   height: 60px;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(201,185,154,0.5), transparent);
+  background: linear-gradient(to bottom, rgba(201,185,154,0.45), transparent);
   opacity: var(--fadeOpacity, 0);
   transition: opacity 0.5s linear;
   z-index: 1;
@@ -111,7 +111,7 @@ body::before {
   color: #3a2606;
   text-decoration: none;
   font-family: 'Jost', sans-serif;
-  font-size: 1.2em;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   font-style: italic;
@@ -163,12 +163,11 @@ body::before {
   pointer-events: none;
 }
 
-/* Decorative lines */
 .hero-line {
   position: absolute;
   width: 150px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
   opacity: 0.5;
   z-index: 1;
 }
@@ -183,7 +182,7 @@ body::before {
 
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 600;
   letter-spacing: 2px;
   background: linear-gradient(90deg, #d4af37, #f5e6a8);
@@ -197,8 +196,7 @@ body::before {
 }
 
 .hero-subtitle {
-  font-family: 'Jost', sans-serif;
-  font-size: clamp(1.3em, 2.5vw, 1.4rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 300;
   color: #ccc;
   letter-spacing: 0.08em;
@@ -210,12 +208,11 @@ body::before {
 
 .cta-btn {
   display: inline-block;
-  padding: 13px 32px;
+  padding: 13px 36px;
   border: 1px solid #d4af37;
   border-radius: 999px;
   color: #d4af37;
-  font-family: 'Jost', sans-serif;
-  font-size: 1.3em;
+  font-size: 0.95rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -228,7 +225,7 @@ body::before {
 .cta-btn:hover {
   background: linear-gradient(90deg, #d4af37, #f5e6a8);
   color: #000;
-  box-shadow: 0 0 24px rgba(212,175,55,0.55);
+  box-shadow: 0 0 26px rgba(212,175,55,0.55);
 }
 
 @keyframes fadeSlide {
@@ -250,7 +247,7 @@ body::before {
    MINI RESUME
 =========================== */
 .mini-resume-section {
-  padding: 20px 0 20px;
+  padding: 20px 0;
 }
 
 .mini-resume {
@@ -272,7 +269,7 @@ body::before {
 .mini-content {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .mini-item {
@@ -291,7 +288,7 @@ body::before {
 }
 
 .mini-item p {
-  font-size: 1.2em;
+  font-size: 0.9rem;
   color: var(--text-muted);
   margin: 0;
   letter-spacing: 0.02em;
@@ -311,7 +308,7 @@ body::before {
   font-weight: 400;
   color: var(--gold);
   letter-spacing: 0.04em;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
   position: relative;
   display: inline-block;
 }
@@ -343,15 +340,13 @@ body::before {
 
 .card:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(201,168,76,0.30);
+  border-color: rgba(201,168,76,0.28);
 }
 
-/* Skills card — subtle inner glow */
 .skills-card {
   background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(255,255,255,0.03) 100%);
 }
 
-/* Paper-bg for à-propos & contact — dark texture */
 .paper-bg::before {
   content: "";
   position: absolute;
@@ -379,27 +374,24 @@ body::before {
   place-items: center;
 }
 
-.skill-float {
-  display: inline-grid;
-  place-items: center;
-}
+.skill-float { display: inline-grid; place-items: center; }
 
-.skill-float:nth-child(1)  { animation: float 4s ease-in-out infinite; animation-delay: 0s; }
-.skill-float:nth-child(2)  { animation: float 4s ease-in-out infinite; animation-delay: 0.3s; }
-.skill-float:nth-child(3)  { animation: float 4s ease-in-out infinite; animation-delay: 0.6s; }
-.skill-float:nth-child(4)  { animation: float 4s ease-in-out infinite; animation-delay: 0.9s; }
-.skill-float:nth-child(5)  { animation: float 4s ease-in-out infinite; animation-delay: 1.2s; }
-.skill-float:nth-child(6)  { animation: float 4s ease-in-out infinite; animation-delay: 1.5s; }
-.skill-float:nth-child(7)  { animation: float 4s ease-in-out infinite; animation-delay: 1.8s; }
-.skill-float:nth-child(8)  { animation: float 4s ease-in-out infinite; animation-delay: 2.1s; }
-.skill-float:nth-child(9)  { animation: float 4s ease-in-out infinite; animation-delay: 2.4s; }
-.skill-float:nth-child(10) { animation: float 4s ease-in-out infinite; animation-delay: 2.7s; }
-.skill-float:nth-child(11) { animation: float 4s ease-in-out infinite; animation-delay: 3.0s; }
-.skill-float:nth-child(12) { animation: float 4s ease-in-out infinite; animation-delay: 3.3s; }
+.skill-float:nth-child(1)  { animation: float 4s ease-in-out infinite 0.0s; }
+.skill-float:nth-child(2)  { animation: float 4s ease-in-out infinite 0.3s; }
+.skill-float:nth-child(3)  { animation: float 4s ease-in-out infinite 0.6s; }
+.skill-float:nth-child(4)  { animation: float 4s ease-in-out infinite 0.9s; }
+.skill-float:nth-child(5)  { animation: float 4s ease-in-out infinite 1.2s; }
+.skill-float:nth-child(6)  { animation: float 4s ease-in-out infinite 1.5s; }
+.skill-float:nth-child(7)  { animation: float 4s ease-in-out infinite 1.8s; }
+.skill-float:nth-child(8)  { animation: float 4s ease-in-out infinite 2.1s; }
+.skill-float:nth-child(9)  { animation: float 4s ease-in-out infinite 2.4s; }
+.skill-float:nth-child(10) { animation: float 4s ease-in-out infinite 2.7s; }
+.skill-float:nth-child(11) { animation: float 4s ease-in-out infinite 3.0s; }
+.skill-float:nth-child(12) { animation: float 4s ease-in-out infinite 3.3s; }
 
 .skill-float img {
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
   border-radius: 14px;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
@@ -412,35 +404,47 @@ body::before {
   100% { transform: translateY(0); }
 }
 
-@media(max-width:768px) {
+@media(max-width: 768px) {
   .skills { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ===========================
    CAROUSEL
 =========================== */
-.carousel-card { position: relative; }
-
-.carousel-wrap {
+.carousel-card {
   position: relative;
-  padding-bottom: 80px;
+  padding-bottom: 32px;
+}
+
+/* Swiper */
+.mySwiper {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  height: 230px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity var(--transition);
 }
 
 .swiper-slide img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 12px;
   display: block;
+  border-radius: 14px;
 }
 
-.mySwiper {
-  padding-bottom: 40px;
+/* Slides non actives légèrement assombries */
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.55;
 }
 
-.mySwiper .swiper-pagination {
-  position: static;
-  margin-top: 12px;
+.swiper-pagination {
+  bottom: 8px !important;
 }
 
 .swiper-pagination-bullet {
@@ -453,27 +457,56 @@ body::before {
   opacity: 1;
 }
 
-.project-text {
-  margin-top: 16px;
-  text-align: center;
+/* Boutons < > */
+.carousel-btn {
+  position: absolute;
+  bottom: 28px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  background: transparent;
+  font-size: 24px;
+  font-weight: 700;
+  color: #d4af37;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
-.project-text p {
-  color: var(--text-muted);
-  font-size: 1.3em;
-  line-height: 1.8;
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-btn:hover {
+  background: linear-gradient(90deg, #d4af37, #f5e6a8);
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 22px rgba(212,175,55,0.55);
+}
+
+/* Infos projet */
+.project-info {
+  margin-top: 24px;
+  text-align: center;
+  padding: 0 8px;
 }
 
 #project-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.85;
   white-space: pre-line;
 }
 
 .project-link {
   display: inline-flex;
-  margin-top: 12px;
+  margin-top: 14px;
   color: var(--gold);
   text-decoration: none;
-  font-size: 1.3em;
+  font-size: 0.88rem;
   letter-spacing: 0.06em;
   border-bottom: 1px solid var(--gold-dim);
   padding-bottom: 2px;
@@ -485,33 +518,8 @@ body::before {
   border-color: var(--gold-light);
 }
 
-/* Carousel buttons — style hero CTA */
-.carousel-btn {
-  position: absolute;
-  bottom: 90px;
-  top: auto;
-  transform: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #d4af37;
-  border-radius: 12px;
-  background: transparent;
-  font-size: 22px;
-  font-weight: 700;
-  color: #d4af37;
-  cursor: pointer;
-  z-index: 10;
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
-}
-
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
-
-.carousel-btn:hover {
-  background: linear-gradient(90deg, #d4af37, #f5e6a8);
-  color: #000;
-  box-shadow: 0 0 20px rgba(212,175,55,0.55);
-  border-color: transparent;
+@media(max-width: 768px) {
+  .swiper-slide { height: 160px; }
 }
 
 /* ===========================
@@ -521,11 +529,10 @@ body::before {
   line-height: 1.9;
   text-align: left;
   color: var(--text-muted);
-  font-size: 1.3em;
+  font-size: 0.95rem;
 }
 
 .signature {
-  font-style: italic;
   margin: 30px 0 0;
   display: block;
 }
@@ -560,7 +567,7 @@ body::before {
   color: var(--text);
   outline: none;
   font-family: 'Jost', sans-serif;
-  font-size: 1em;
+  font-size: 0.9rem;
   transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
@@ -573,7 +580,7 @@ body::before {
 .contact textarea:focus {
   border-color: #d4af37;
   background: rgba(212,175,55,0.05);
-  box-shadow: 0 0 14px rgba(212,175,55,0.25);
+  box-shadow: 0 0 14px rgba(212,175,55,0.22);
 }
 
 .contact button {
@@ -586,16 +593,22 @@ body::before {
   color: #d4af37;
   cursor: pointer;
   font-family: 'Jost', sans-serif;
-  font-size: 14px;
+  font-size: 0.88rem;
   letter-spacing: 0.06em;
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .contact button:hover {
   background: linear-gradient(90deg, #d4af37, #f5e6a8);
   color: #000;
   border-color: transparent;
-  box-shadow: 0 0 20px rgba(212,175,55,0.55);
+  box-shadow: 0 0 22px rgba(212,175,55,0.55);
+}
+
+.status-message {
+  text-align: center;
+  font-size: 0.88rem;
+  min-height: 1.4em;
 }
 
 .contact-icons {
@@ -615,7 +628,7 @@ body::before {
   place-items: center;
   color: #d4af37;
   text-decoration: none;
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .icon-btn svg {
@@ -634,13 +647,13 @@ body::before {
    FOOTER
 =========================== */
 .site-footer {
-  background: rgba(201,185,154,0.12);
+  background: rgba(201,185,154,0.1);
   border-top: 1px solid var(--border);
   padding: 24px 20px;
   text-align: center;
   margin-top: 60px;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
 
@@ -653,10 +666,10 @@ body::before {
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.88);
   z-index: 9999;
   padding: 24px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
 .lightbox.is-open { display: flex; }
@@ -678,14 +691,17 @@ body::before {
 
 .lb-close, .lb-prev, .lb-next {
   position: absolute;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(201,168,76,0.3);
   background: rgba(201,168,76,0.1);
   color: var(--gold);
   border-radius: 999px;
   width: 44px;
   height: 44px;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background var(--transition);
 }
 
@@ -694,7 +710,7 @@ body::before {
 }
 
 .lb-close { top: 18px; right: 18px; }
-.lb-prev  { left: 18px; top: 50%; transform: translateY(-50%); }
+.lb-prev  { left: 18px;  top: 50%; transform: translateY(-50%); }
 .lb-next  { right: 18px; top: 50%; transform: translateY(-50%); }
 
 /* ===========================
@@ -723,23 +739,6 @@ body::before {
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
   }
 }
-
-
-/* ===========================
-   FONT-SIZE RESPONSIVE
-=========================== */
-html {
-  font-size: clamp(14px, 1.2vw + 8px, 18px);
-}
-
-.main-nav a        { font-size: clamp(0.85rem, 1vw + 0.4rem, 1.2rem); }
-.mini-item p       { font-size: clamp(0.85rem, 1vw + 0.3rem, 1.2rem); }
-.about-text        { font-size: clamp(0.9rem, 1vw + 0.4rem, 1.3rem); }
-.project-text p,
-.project-link      { font-size: clamp(0.85rem, 1vw + 0.3rem, 1.3rem); }
-.contact input,
-.contact textarea  { font-size: clamp(0.85rem, 1vw + 0.2rem, 1rem); }
-.site-footer       { font-size: clamp(11px, 0.8vw + 6px, 14px); }

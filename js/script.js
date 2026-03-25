@@ -1,14 +1,20 @@
+/* ===========================================
+   PORTFOLIO – script.js
+   Leïla Ramouhi
+=========================================== */
+
 // ===== SWIPER =====
 const swiper = new Swiper(".mySwiper", {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
+  slideToClickedSlide: true, // clic sur slide latérale → elle vient au centre
   slidesPerView: 3,
-  spaceBetween: 20,
+  spaceBetween: 24,
   coverflowEffect: {
-    rotate: 40,
+    rotate: 35,
     stretch: 0,
-    depth: 120,
+    depth: 100,
     modifier: 1,
     slideShadows: true,
   },
@@ -17,30 +23,24 @@ const swiper = new Swiper(".mySwiper", {
     clickable: true,
   },
   breakpoints: {
-    0: { slidesPerView: 1.2 },
-    600: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 },
+    0: { slidesPerView: 1.15, spaceBetween: 12 },
+    600: { slidesPerView: 2, spaceBetween: 16 },
+    1024: { slidesPerView: 3, spaceBetween: 24 },
   },
 });
 
 // ===== BOUTONS < > =====
-const btnNext = document.querySelector(".carousel-btn.next");
-const btnPrev = document.querySelector(".carousel-btn.prev");
+document
+  .querySelector(".carousel-btn.next")
+  ?.addEventListener("click", () => swiper.slideNext());
+document
+  .querySelector(".carousel-btn.prev")
+  ?.addEventListener("click", () => swiper.slidePrev());
 
-if (btnNext)
-  btnNext.addEventListener("click", () => {
-    swiper.slideNext();
-    swiper.slideTo(swiper.activeIndex, 300); // recentre
-  });
-if (btnPrev)
-  btnPrev.addEventListener("click", () => {
-    swiper.slidePrev();
-    swiper.slideTo(swiper.activeIndex, 300); // recentre
-  });
-
-// ===== TEXTE + LIEN PAR SLIDE =====
+// ===== DONNÉES PROJETS =====
 const projects = [
   {
+    title: "Site vitrine – Henné by Anissa",
     text:
       "J'ai créé ce site vitrine à partir d'un besoin concret, mais aussi comme un vrai terrain de progression.\n" +
       "Il m'a permis de travailler la logique côté base de données et JavaScript, tout en construisant un projet utile et structuré.\n" +
@@ -49,28 +49,31 @@ const projects = [
     url: "https://leilarmh04.github.io/Site-Vitrine-Henne/",
   },
   {
+    title: "Évaluation HTML / CSS",
     text:
-      "Dans le cadre d'une évaluation HTML/CSS, j'ai réalisé un site web destiné à présenter mes compétences en intégration. L'objectif était de transformer une maquette fournie en un site fonctionnel, tout en respectant la structure et l'apparence du design original. \n" +
-      "J'ai construit l'intégralité du site en utilisant uniquement HTML et CSS. Même si le design n'était pas de moi, j'ai pris en charge toute la partie technique : organisation du contenu, mise en page, intégration des images, choix des bonnes balises, gestion des espacements et du rendu global. Ce projet m'a permis de mettre en pratique mes connaissances, mais surtout d'apprendre énormément sur la manière de structurer un site proprement et de reproduire fidèlement une maquette.\n" +
-      "Cette évaluation a été une vraie occasion de progresser et de consolider mes bases. Elle m'a permis de mieux comprendre les exigences d'un travail d'intégration et de gagner en assurance dans ma façon de coder.",
+      "Dans le cadre d'une évaluation HTML/CSS, j'ai réalisé un site web destiné à présenter mes compétences en intégration.\n" +
+      "L'objectif était de transformer une maquette fournie en un site fonctionnel, tout en respectant la structure et l'apparence du design original.\n" +
+      "J'ai construit l'intégralité du site en utilisant uniquement HTML et CSS : organisation du contenu, mise en page, intégration des images, choix des balises, gestion des espacements et du rendu global.\n" +
+      "Cette évaluation m'a permis de consolider mes bases et de gagner en assurance dans ma façon de coder.",
+    url: "",
   },
 ];
 
+// ===== MISE À JOUR DU TEXTE =====
 const descEl = document.getElementById("project-desc");
 const linkEl = document.getElementById("project-link");
 
 function updateProjectUI() {
   const i = Number.isFinite(swiper.realIndex) ? swiper.realIndex : 0;
-  const p = projects[i] || { text: "", url: "" };
+  const p = projects[i] ?? { text: "", url: "" };
 
-  if (descEl) descEl.textContent = p.text || "";
+  if (descEl) descEl.textContent = p.text;
 
   if (linkEl) {
     if (p.url) {
       linkEl.href = p.url;
       linkEl.style.display = "inline-flex";
     } else {
-      linkEl.href = "#";
       linkEl.style.display = "none";
     }
   }
@@ -82,92 +85,75 @@ swiper.on("slideChange", updateProjectUI);
 // ===== LIGHTBOX =====
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
-
 const lbClose = lightbox?.querySelector(".lb-close");
 const lbPrev = lightbox?.querySelector(".lb-prev");
 const lbNext = lightbox?.querySelector(".lb-next");
 
 function toAbsUrl(src) {
   try {
-    return new URL(src, window.location.href).href;
+    return new URL(src, location.href).href;
   } catch {
     return src || "";
   }
 }
 
-function getAllSlideImages() {
-  return Array.from(document.querySelectorAll(".mySwiper .swiper-slide img"))
-    .map((img) => img.currentSrc || img.src)
-    .map(toAbsUrl)
+function getSlideImages() {
+  return [...document.querySelectorAll(".mySwiper .swiper-slide img")]
+    .map((img) => toAbsUrl(img.currentSrc || img.src))
     .filter(Boolean);
 }
 
-function openLightbox(startIndex) {
-  const images = getAllSlideImages();
-  if (!images.length || !lightbox || !lightboxImg) return;
-  lightbox.dataset.images = JSON.stringify(images);
-  lightbox.dataset.index = String(startIndex);
-  lightboxImg.src = images[startIndex];
+function openLightbox(idx) {
+  const imgs = getSlideImages();
+  if (!imgs.length || !lightbox || !lightboxImg) return;
+  lightbox.dataset.images = JSON.stringify(imgs);
+  lightbox.dataset.index = String(idx);
+  lightboxImg.src = imgs[idx];
   lightbox.classList.add("is-open");
   lightbox.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
-  if (!lightbox || !lightboxImg) return;
+  if (!lightbox) return;
   lightbox.classList.remove("is-open");
   lightbox.setAttribute("aria-hidden", "true");
-  lightboxImg.src = "";
+  if (lightboxImg) lightboxImg.src = "";
   document.body.style.overflow = "";
 }
 
-function show(delta) {
-  if (!lightbox || !lightboxImg) return;
-  const images = JSON.parse(lightbox.dataset.images || "[]");
-  if (!images.length) return;
-  let index = Number(lightbox.dataset.index || 0);
-  index = (index + delta + images.length) % images.length;
-  lightbox.dataset.index = String(index);
-  lightboxImg.src = images[index];
+function shiftLightbox(delta) {
+  const imgs = JSON.parse(lightbox?.dataset.images || "[]");
+  if (!imgs.length) return;
+  let idx =
+    (Number(lightbox.dataset.index || 0) + delta + imgs.length) % imgs.length;
+  lightbox.dataset.index = String(idx);
+  if (lightboxImg) lightboxImg.src = imgs[idx];
 }
 
-// ===== CLIC SUR UNE SLIDE POUR LA CENTRER =====
-document.addEventListener("click", (e) => {
-  const slide = e.target.closest(".mySwiper .swiper-slide");
-  if (!slide) return;
-
-  const slides = Array.from(
-    document.querySelectorAll(".mySwiper .swiper-slide"),
-  );
-  const clickedIndex = slides.indexOf(slide);
-  if (clickedIndex < 0) return;
-
-  // Si ce n'est pas la slide active, on la centre (pas de lightbox)
-  if (!slide.classList.contains("swiper-slide-active")) {
-    swiper.slideTo(clickedIndex, 300);
-    return;
-  }
-
-  // Si c'est la slide active, on ouvre la lightbox
-  const img = slide.querySelector("img");
-  if (!img) return;
-  const clickedSrc = toAbsUrl(img.currentSrc || img.src);
-  if (!clickedSrc) return;
-  const sources = getAllSlideImages();
-  let finalIndex = sources.indexOf(clickedSrc);
-  if (finalIndex < 0) {
-    const clickedFile = clickedSrc.split("/").pop();
-    finalIndex = sources.findIndex((s) => s.split("/").pop() === clickedFile);
-  }
-  if (finalIndex < 0) return;
-  openLightbox(finalIndex);
+// Ouvrir lightbox uniquement sur clic de la slide ACTIVE
+swiper.on("click", () => {
+  const active = document.querySelector(".mySwiper .swiper-slide-active img");
+  if (!active) return;
+  const src = toAbsUrl(active.currentSrc || active.src);
+  const imgs = getSlideImages();
+  let idx = imgs.indexOf(src);
+  if (idx < 0)
+    idx = imgs.findIndex((s) => s.split("/").pop() === src.split("/").pop());
+  if (idx < 0) return;
+  openLightbox(idx);
 });
 
-lbPrev?.addEventListener("click", () => show(-1));
-lbNext?.addEventListener("click", () => show(1));
 lbClose?.addEventListener("click", closeLightbox);
+lbPrev?.addEventListener("click", () => shiftLightbox(-1));
+lbNext?.addEventListener("click", () => shiftLightbox(+1));
 lightbox?.addEventListener("click", (e) => {
   if (e.target === lightbox) closeLightbox();
+});
+
+// Fermer avec Échap
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLightbox();
 });
 
 // ===== HEADER FADE ON SCROLL =====
@@ -175,12 +161,61 @@ const header = document.querySelector(".header-color");
 
 function updateHeaderFade() {
   if (!header) return;
-  const y = window.scrollY;
-  let t = (y - 0) / 160;
-  if (t < 0) t = 0;
-  if (t > 1) t = 1;
+  const t = Math.min(Math.max(window.scrollY / 160, 0), 1);
   header.style.setProperty("--fadeOpacity", String(t));
 }
 
 updateHeaderFade();
 window.addEventListener("scroll", updateHeaderFade, { passive: true });
+
+// ===== EMAILJS =====
+// IDs à retrouver sur https://dashboard.emailjs.com
+// - Service ID  : dans "Email Services"
+// - Template ID : dans "Email Templates"
+// - Public Key  : dans "Account" > "General"
+//
+// Dans ton template EmailJS, utilise ces variables :
+//   {{from_name}}   → Nom de l'expéditeur
+//   {{from_email}}  → Email de l'expéditeur
+//   {{message}}     → Corps du message
+
+document
+  .getElementById("contactForm")
+  ?.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const statusEl = document.getElementById("status-message");
+    const btn = this.querySelector("button[type='submit']");
+
+    // Feedback visuel
+    if (statusEl) {
+      statusEl.textContent = "Envoi en cours…";
+      statusEl.style.color = "var(--text-muted)";
+    }
+    if (btn) btn.disabled = true;
+
+    emailjs
+      .sendForm(
+        "service_elp7sjd", // ← ton Service ID EmailJS
+        "template_x7imh5p", // ← ton Template ID EmailJS
+        this, // ← le formulaire lui-même
+      )
+      .then(() => {
+        if (statusEl) {
+          statusEl.textContent = "✓ Message envoyé avec succès !";
+          statusEl.style.color = "#7ecb8a";
+        }
+        this.reset();
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        if (statusEl) {
+          statusEl.textContent =
+            "✗ Une erreur est survenue. Réessaie plus tard.";
+          statusEl.style.color = "#e07070";
+        }
+      })
+      .finally(() => {
+        if (btn) btn.disabled = false;
+      });
+  });
