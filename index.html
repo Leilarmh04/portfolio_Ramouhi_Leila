@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Ramouhi Leïla</title>
+  <meta name="description" content="Portfolio de Leïla Ramouhi, développeuse web et web mobile Full Stack." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Leïla Ramouhi - Développeuse web" />
+  <meta property="og:description" content="Portfolio de Leïla Ramouhi, développeuse web et web mobile." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header-color" id="top">
+  <div class="header-inner container">
+    <div class="header-spacer" aria-hidden="true"></div>
+    
+    <a class="brand" href="#top" aria-label="Retour en haut">
+      <img src="assets/img/Logo_initiale.png" alt="Logo LR" class="brand-logo">
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <span class="hero-line top" aria-hidden="true"></span>
+  <span class="hero-line bottom" aria-hidden="true"></span>
+
+  <div class="hero-content">
+    <h1 class="hero-title">Leïla Ramouhi</h1>
+    <p class="hero-subtitle">Développeuse web et web mobile</p>
+    <a href="#projets" class="cta-btn">Voir mes projets</a>
+  </div>
+
+  <!-- Glow orb -->
+  <div class="hero-glow" aria-hidden="true"></div>
+</section>
+
+<main class="container">
+
+  <!-- MINI RESUME -->
+  <section class="mini-resume-section">
+    <div class="mini-resume">
+      <div class="mini-line"></div>
+      <div class="mini-content">
+        <div class="mini-item">
+          <div class="mini-dot"></div>
+          <p>En formation de développeuse web et web mobile</p>
+        </div>
+        <div class="mini-item">
+          <div class="mini-dot"></div>
+          <p>Je crée des projets web modernes</p>
+        </div>
+        <div class="mini-item">
+          <div class="mini-dot"></div>
+          <p>À la recherche d'une alternance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- PROJETS -->
+  <section id="projets" class="section">
+    <h2>Mes projets</h2>
+    <div class="card carousel-card">
+      <div class="carousel-wrap">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="project-img" src="assets/imgProjet/henné1.png" alt="Page d'accueil site henné">
+            </div>
+            <div class="swiper-slide">
+              <img class="project-img" src="assets/imgProjet/EVAL-HTML-CSS.png" alt="Projet HTML/CSS">
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <button class="carousel-btn prev" type="button" aria-label="Projet précédent">‹</button>
+        <button class="carousel-btn next" type="button" aria-label="Projet suivant">›</button>
+      </div>
+      <div id="text-carousel" class="project-text">
+        <p id="project-desc">Texte du projet</p>
+        <a id="project-link" class="project-link" href="#" target="_blank" rel="noopener noreferrer">Voir le site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCES -->
+  <section id="competences" class="section">
+    <h2>Mes compétences</h2>
+    <div class="card skills-card">
+      <div class="skills">
+        <span class="skill-float"><img src="assets/img/html-removebg-preview.png" alt="HTML"></span>
+        <span class="skill-float"><img src="assets/img/css3-logo-png-transparent.png" alt="CSS"></span>
+        <span class="skill-float"><img src="assets/img/javascript-736400_960_720.webp" alt="JavaScript"></span>
+        <span class="skill-float"><img src="assets/img/PHP-logo.svg.png" alt="PHP"></span>
+        <span class="skill-float"><img src="assets/img/Github-blanc-portfolio.png" alt="GitHub"></span>
+        <span class="skill-float"><img src="assets/img/trello.png" alt="Trello"></span>
+        <span class="skill-float"><img src="assets/img/Figma-1-logo.png" alt="Figma"></span>
+        <span class="skill-float"><img src="assets/img/symfony-Icon-removebg-preview.png" alt="Symfony"></span>
+        <span class="skill-float"><img src="assets/img/vscode-removebg-preview.png" alt="VS Code"></span>
+        <span class="skill-float"><img src="assets/img/mysql-5-logo-png-transparent.png" alt="MySQL"></span>
+        <span class="skill-float"><img src="assets/img/Git-logo.svg.png" alt="Git"></span>
+        <span class="skill-float"><img src="assets/img/docker-logo-sansBG.png" alt="Docker"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos" class="section">
+    <h2>À propos de moi</h2>
+    <div class="card paper-bg">
+      <p class="about-text">
+        <br><br>
+        Je n'ai pas toujours su que je voulais travailler dans le développement web. Mais dès que j'ai découvert le code, tout s'est éclairé : créer, tester, ajuster… et voir une idée prendre forme à l'écran. J'ai tout de suite accroché.
+        <br><br>
+        Ce qui me motive le plus aujourd'hui, c'est la partie créative du développement : imaginer une interface, soigner les détails, et trouver le juste équilibre entre esthétique, clarté et logique.
+        <br><br>
+        Je me forme actuellement au développement full‑stack, avec une préférence pour le front‑end et l'UX. Curieuse et persévérante, j'apprends en construisant, en expérimentant et en itérant.
+        <br><br>
+        Je recherche une alternance pour continuer à progresser, gagner en confiance et participer à des projets concrets, utiles et bien pensés.
+        <br><br>
+        <a class="signature" href="https://fontmeme.com/fr/polices-de-signature/">
+          <img src="assets\imgSignature\signature_portfolio.png" alt="Signature Leila" border="0">
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2>Contactez-moi</h2>
+    <div class="card paper-bg">
+      <div class="contact-layout">
+        <form class="contact" id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Nom" required>
+            <input type="email" placeholder="Email" required>
+          </div>
+          <textarea placeholder="Message" rows="6" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+
+        <aside class="contact-icons" aria-label="Liens externes">
+          <a class="icon-btn" href="https://github.com/Leilarmh04" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+              <path fill="currentColor" d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72z"/>
+            </svg>
+          </a>
+          <a class="icon-btn" href="https://www.linkedin.com/in/le%C3%AFla-ramouhi-b3b28335b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+              <path fill="currentColor" d="M196.3 512L103.4 512L103.4 212.9L196.3 212.9L196.3 512zM149.8 172.1C120.1 172.1 96 147.5 96 117.8C96 103.5 101.7 89.9 111.8 79.8C121.9 69.7 135.6 64 149.8 64C164 64 177.7 69.7 187.8 79.8C197.9 89.9 203.6 103.6 203.6 117.8C203.6 147.5 179.5 172.1 149.8 172.1zM543.9 512L451.2 512L451.2 366.4C451.2 331.7 450.5 287.2 402.9 287.2C354.6 287.2 347.2 324.9 347.2 363.9L347.2 512L254.4 512L254.4 212.9L343.5 212.9L343.5 253.7L344.8 253.7C357.2 230.2 387.5 205.4 432.7 205.4C526.7 205.4 544 267.3 544 347.7L544 512L543.9 512z"/>
+            </svg>
+          </a>
+          <a class="icon-btn" href="assets/img/CVLeila_Ramouhi2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger mon CV">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+              <path fill="currentColor" d="M176 544C96.5 544 32 479.5 32 400C32 336.6 73 282.8 129.9 263.5C128.6 255.8 128 248 128 240C128 160.5 192.5 96 272 96C327.4 96 375.5 127.3 399.6 173.1C413.8 164.8 430.4 160 448 160C501 160 544 203 544 256C544 271.7 540.2 286.6 533.5 299.7C577.5 320 608 364.4 608 416C608 486.7 550.7 544 480 544L176 544Z" />
+            </svg>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 – Leïla Ramouhi – Tous droits réservés</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-close" type="button" aria-label="Fermer">✕</button>
+  <button class="lb-prev" type="button" aria-label="Image précédente">‹</button>
+  <figure class="lb-figure">
+    <img id="lightboxImg" class="lb-img" src="" alt="">
+  </figure>
+  <button class="lb-next" type="button" aria-label="Image suivante">›</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
