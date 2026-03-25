@@ -24,7 +24,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 350%;
 }
 
 body {
@@ -58,6 +57,8 @@ body::before {
 /* ===========================
    HEADER
 =========================== */
+
+
 .header-color {
   background: var(--header-bg);
   position: sticky;
@@ -559,7 +560,7 @@ body::before {
   color: var(--text);
   outline: none;
   font-family: 'Jost', sans-serif;
-  font-size: 1.3em;
+  font-size: 1em;
   transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
@@ -725,3 +726,20 @@ body::before {
     font-size: clamp(2.5rem, 12vw, 4rem);
   }
 }
+
+
+/* ===========================
+   FONT-SIZE RESPONSIVE
+=========================== */
+html {
+  font-size: clamp(14px, 1.2vw + 8px, 18px);
+}
+
+.main-nav a        { font-size: clamp(0.85rem, 1vw + 0.4rem, 1.2rem); }
+.mini-item p       { font-size: clamp(0.85rem, 1vw + 0.3rem, 1.2rem); }
+.about-text        { font-size: clamp(0.9rem, 1vw + 0.4rem, 1.3rem); }
+.project-text p,
+.project-link      { font-size: clamp(0.85rem, 1vw + 0.3rem, 1.3rem); }
+.contact input,
+.contact textarea  { font-size: clamp(0.85rem, 1vw + 0.2rem, 1rem); }
+.site-footer       { font-size: clamp(11px, 0.8vw + 6px, 14px); }
