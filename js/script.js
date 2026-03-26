@@ -55,7 +55,21 @@ const projects = [
       "L'objectif était de transformer une maquette fournie en un site fonctionnel, tout en respectant la structure et l'apparence du design original.\n" +
       "J'ai construit l'intégralité du site en utilisant uniquement HTML et CSS : organisation du contenu, mise en page, intégration des images, choix des balises, gestion des espacements et du rendu global.\n" +
       "Cette évaluation m'a permis de consolider mes bases et de gagner en assurance dans ma façon de coder.",
-    url: "",
+    url: "http://127.0.0.1:5503/Premiere-evaluation-HTML-CSS/eval_lbb.html",
+  },
+  {
+    title: "Traduction",
+    text: "\n" + "\n" + "\n" + "",
+    url: "https://github.com/Leilarmh04/Traduction",
+  },
+  {
+    title: "Jeu virtuel",
+    text:
+      "Dans le cadre d'un projet de groupe, j'ai contribué à la création d'un jeu virtuel interactif et engageant.\n" +
+      "\n" +
+      "\n" +
+      "",
+    url: "https://github.com/SPLprod/Sport-Virtuel",
   },
 ];
 
